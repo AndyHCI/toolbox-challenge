@@ -15,7 +15,7 @@ console.log(tiles);
 
 // when document is ready
 $(document).ready(function() {
-	// catch click even of start game button
+	// catch click event of start game button
 	$('#start-game').click(function() {
 		console.log('start game button clicked');
 		tiles = _.shuffle(tiles);
@@ -41,11 +41,8 @@ $(document).ready(function() {
 				src: 'img/tile-back.png',
 				alt: 'tile ' + tile.tileNum
 			});
-
 			img.data('tile', tile);
-
 			row.append(img);
-
 		});
 		gameBoard.append(row);
 
@@ -62,6 +59,11 @@ $(document).ready(function() {
 			}
 		}, 1000);
 
+		// new variables
+		var matches = 0;
+		var remaining = 8;
+		var missed = 0;
+
 		$('#game-board img').click(function() {
 			//console.log(this.alt);
 			var clickedImg = $(this);
@@ -77,12 +79,11 @@ $(document).ready(function() {
 function flipTile(tile, img) {
 	img.fadeOut(100, function() {
 		if (tile.flipped) {
-		img.attr('src', 'img/tile-back.png');
+			img.attr('src', 'img/tile-back.png');
 		} else {
-		img.attr('src', tile.src);
+			img.attr('src', tile.src);
 		}
 		tile.flipped = !tile.flipped;
 		img.fadeIn(100);
 	});
-
 }
