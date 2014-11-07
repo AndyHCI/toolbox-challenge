@@ -3,16 +3,45 @@
 <head lang="en">
 	<meta charset="UTF-8">
 	<title>Memory!</title>
-	<link rel="stylesheet" href="css/main.css">
+	
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-	<h1>Memory!</h1>
-	<p><button id="start-game">Start New Game</button></p>
+ <main class="container-fluid">
+	<section class='row header'>
+		<div class="col-md-8 col-md-offset-2">
+			<div class='jumbotron'>
+				<div class='title'>
+					<h1>Memory Game</h1>
+					<p><button type="button" id="start-game" class="btn btn-success">Start New Game</button>
+					<button type="button" id="instructions" class="btn btn-info">Instructions</button>
+					</p>
 
-	<p>elapsed time: <span id="elapsed-seconds"></span></p>
-
-	<div id="game-board"></div>
-
+				<div>
+			</div>
+	</section>
+	<section class='row stats'>
+		<div class="col-md-2 col-md-offset-3">
+			<p class='stats'>Time: <span id="elapsed-seconds"></span></p>
+		</div>
+		<div class="col-md-2">
+			<p class='stats'>Matches: <span id="matches">0</span></p>
+		</div>
+		<div class="col-md-2">
+			<p class='stats'>Missed: <span id="missed">0</span></p>
+		</div>
+		<div class="col-md-2">
+			<p class='stats'>Remaining:  <span id="remaining">8</span></p>
+		</div>
+	</section>
+	<section class='row board'>
+		<div class="col-md-8 col-md-offset-2">
+			<div id="game-board"></div>
+			<div class='overlay'></div>
+		</div>
+	</section>
+ </main>
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
 	<script src="js/app.js"></script>
