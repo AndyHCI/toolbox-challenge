@@ -19,10 +19,7 @@ $(document).ready(function() {
 	var timer;
 	$('#start-game').click(function() {
 		window.clearInterval(timer);
-
-		console.log('start game button clicked');
 		tiles = _.shuffle(tiles);
-	
 		var selectedTiles = tiles.slice(0, 8);
 		var tilePairs = [];
 		_.forEach(selectedTiles, function(tile) {
@@ -51,21 +48,31 @@ $(document).ready(function() {
 			row.append(img);
 		});
 		gameBoard.append(row);
+		$('#game-board img').addClass('shake animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+			      $(this).removeClass();
 
-		//setting time
+		});;
+		// setting time
 		// gets starting milliseconds
 		var startTime = Date.now();
 		timer = window.setInterval(function () {
 			var elapsedSeconds = (Date.now() - startTime) / 1000; 
 			elapsedSeconds = Math.floor(elapsedSeconds);
+	
 			if (elapsedSeconds == 1) {
 				$('#elapsed-seconds').text(elapsedSeconds + ' second');
+
+
 			} else {
-				$('#elapsed-seconds').text(elapsedSeconds + ' seconds');
+				$('#elapsed-seconds').addClass('flipOutX animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+			      $(this).removeClass();
+			      $('#elapsed-seconds').text(elapsedSeconds + ' seconds')
+			    });;
 			}
+
 		}, 1000);
 
-		// new variables
+		//stat tracking
 		var matches = 0;
 		$('#matches').text(matches);
 		var remaining = 8;
@@ -79,7 +86,6 @@ $(document).ready(function() {
 		var isDone = true;
 
 			$('#game-board img').click(function () {
-
 				//console.log(this.alt);
 				console.log(isDone);
 				console.log(click);
@@ -119,7 +125,8 @@ $(document).ready(function() {
 						// executes if user wins
 						if (matches == 8) {
 							stopTimer(timer);
-							winScreen();
+							$('#winScreenModal').modal('show');
+							$('#congrats').addClass('zoomIn animated');
 						}
 
 					} else {
@@ -157,9 +164,11 @@ function flipTile(tile, img) {
 		}
 		tile.flipped = !tile.flipped;
 		img.fadeIn(100);
+
 	});
 }
 
 function winScreen() {
 	$('.overlay').show();
 }
+

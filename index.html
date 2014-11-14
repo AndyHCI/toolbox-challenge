@@ -2,11 +2,18 @@
 <html>
 <head lang="en">
 	<meta charset="UTF-8">
+
+	<meta name="author" content="Andrew Boydston">
+	<meta name="description" content="This is a memory game">
+
 	<title>Memory!</title>
 	
 	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	  <link rel="stylesheet" href="css/animate.css">
 	  <link rel="stylesheet" href="css/main.css">
+
 </head>
+
 <body>
  <main class="container-fluid">
 	<section class='row header'>
@@ -15,12 +22,31 @@
 				<div class='title'>
 					<h1>Memory Game</h1>
 					<p><button type="button" id="start-game" class="btn btn-success">Start New Game</button>
-					<button type="button" id="instructions" class="btn btn-info">Instructions</button>
+					<button type="button" id="instructions" class="btn btn-info" data-toggle="modal" data-target=".instructionModal">Instructions</button>
 					</p>
-
 				<div>
 			</div>
 	</section>
+
+	<div class="modal fade instructionModal" tabindex="-1" role="dialog" aria-labelledby="instructions" aria-hidden="true">
+					  <div class="modal-dialog modal-sm">
+					    <div class="modal-content">
+					    <h2>Instructions</h2>
+
+					    <p>Object of the game is to find matching pairs of pictures. You can only turn over two pictures at once. Once all the pairs have been matched, you win.</p> 
+					    </div>
+					  </div>
+					</div>
+
+	<div class="modal fade winScreenModal" id="winScreenModal" tabindex="-1" role="dialog" aria-labelledby="winScreen" aria-hidden="true">
+	  <div class="modal-dialog modal-sm">
+	    <div class="modal-content">
+	    <h1 id="congrats">You've gotten smarter!*</h1>
+	    <p id="tiny">*no real science to back this claim<p>
+	    </div>
+	  </div>
+	</div>
+
 	<section class='row stats'>
 		<div class="col-md-2 col-md-offset-3">
 			<p class='stats'>Time: <span id="elapsed-seconds"></span></p>
@@ -42,8 +68,12 @@
 		</div>
 	</section>
  </main>
+
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+
+	
 	<script src="js/app.js"></script>
 </body>
 </html>

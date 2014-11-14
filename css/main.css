@@ -58,3 +58,25 @@ img {
     z-index: 1;
     display: none;
 }
+
+.modal-content {
+	padding: 1em;
+	margin-top: 50%;
+}
+
+.modal-backdrop {
+	z-index: 0;
+}
+
+#congrats {
+	text-align: center;
+	color: green;
+
+}
+
+#tiny {
+	font-size: 8.5px;
+	padding-top: 30px;
+	text-align: center;
+}
+
